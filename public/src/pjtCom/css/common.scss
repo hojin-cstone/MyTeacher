@@ -7,7 +7,17 @@
  * --------------------------------
  */
 
-html { font-family:'', sans-serif; font-weight:400; font-size:14px; letter-spacing:-0.05em; line-height:1; color:#000000; word-break:keep-all; word-wrap:break-word; }
+ @font-face {
+ 	font-family:"Spoqa";
+ 	font-style: normal;
+ 	font-weight: 400;
+ 	src:	url(/pjtCom/fonts/Spoqa_Han_Sans_Regular_win_subset.eot);
+ 	src:	url(/pjtCom/fonts/Spoqa_Han_Sans_Regular_win_subset.eot?#iefix) format("embedded-opentype"),
+ 				url(/pjtCom/fonts/Spoqa_Han_Sans_Regular_win_subset.woff) format("woff"),
+ 				url(/pjtCom/fonts/Spoqa_Han_Sans_Regular_win_subset.ttf) format("truetype");
+ }
+
+html { font-family:'Spoqa', sans-serif; font-weight:400; letter-spacing:-0.025em; line-height:1; color:#000000; word-break:keep-all; word-wrap:break-word; }
 h1,h2,h3,h4,h5,h6 { margin:0; }
 ul, ol { list-style:none; margin:0; padding:0; }
 fieldset { margin:0; padding:0; border:none; }
