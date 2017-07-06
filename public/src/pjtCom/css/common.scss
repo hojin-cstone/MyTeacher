@@ -49,7 +49,7 @@ hr { display:none; }
 * header
 * --------------------------------
 */
-
+#header { height:90px; background:#26262a; }
 
 
 
@@ -57,10 +57,12 @@ hr { display:none; }
 * wrap
 * --------------------------------
 */
-
+body { background:#f2f6f9; }
+#contents { width:1200px; margin:0 auto; padding:20px 24px; box-sizing:border-box; }
 
 
 /**
 * footer
 * --------------------------------
 */
+#footer { display:none; }
