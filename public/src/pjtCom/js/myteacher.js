@@ -11,43 +11,67 @@ myTeacher([
 
 	{
 		path : '/learning',
-		controller : 'sub'
+		controller : 'learning'
 	}
 ],{
 	common : function(){
 
 	}, // common
 
-    sub : function(){
+    learning : function(){
         $(window).load(function(){
-			var drag = false;
 
-            $('.answer_list li').mousedown(function(){
+			var answerArea = $('.answer_area'),
+				answerSheet = $('.answer_sheet'),
+				answerList = $('.answer_list');
+
+			var drag = false;
+			var listOffset;
+
+            answerList.find('li').mousedown(function(e){
 				drag = true;
-				var offset = {
-					top : $(this).offset().top,
-					left : $(this).offset().left
+
+				listOffsetTmp = {
+					y : $(this).offset().top,
+					x : $(this).offset().left
 				};
+
+				mouseTmp = {
+					x : e.pageX,
+					y : e.pageY
+				};
+
+				// listM
 
 				$(this).addClass('click');
 				var answerCopy = $(this).clone();
 
-				$('.answer_sheet').append(answerCopy);
+				answerSheet.append(answerCopy);
 			});
 
-			$('.answer_area').mouseup(function(){
+			answerSheet.mouseup(function(){
 				drag = false;
-				$('.answer_sheet li').removeClass('click');
-			}).mousemove(function(e){
+
+				answerArea.find('li').removeClass('click');
+			});
+
+			$(':not(.answer_sheet)').mouseup(function(){
+				drag = false;
+
+				answerSheet.find('li.click').removeClass('click').remove();
+			});
+
+			answerArea.mousemove(function(e){
 				if (drag) {
-					var mouse = {
-						x : e.pageX,
-						y : e.pageY
+					listOffset = {
+						x : e.pageX-(mouseTmp.x-listOffsetTmp.x-10),
+						y : e.pageY-(mouseTmp.y-listOffsetTmp.y-10)
 					};
 
-					$('.answer_area li.click').css({'top':+mouse.y, 'left':+mouse.x});
+					answerSheet.find('li.click').css({'top':listOffset.y, 'left':listOffset.x});
 				}
 			});
+
         });
 	} // sub
 });
